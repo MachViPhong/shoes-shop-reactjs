@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom/client";
+import ShoesStore from "./components/ShoesStore";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import Shop from "./Shop/Shop";
+import Home from "./Home/Home";
+import HomeTemplates from "./templates/HomeTemplates";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <>
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={<HomeTemplates />}>
+          {/* Trang chủ mặc định là index <=> Outlet của HomeTemplate*/}
+          <Route index element={<Home />}></Route>
+          <Route path="home" element={<Home />}></Route>
+          <Route path="shop" element={<Shop />}></Route>
+          {/* <Route path='*' element={<Page404 />}></Route> */}
+          {/* Nếu bấm đường dẫn không tồn tại thì chuyển thẳng về trang home */}
+          <Route path="*" element={<Navigate to="" />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
