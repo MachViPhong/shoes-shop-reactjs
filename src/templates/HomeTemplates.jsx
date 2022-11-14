@@ -6,7 +6,7 @@ export default class HomeTemplates extends Component {
   render() {
     return (
       <div>
-        <div className="row mx-auto justify-content-center align-items-start">
+        <div className="row justify-content-center align-items-start">
           <div className="col-3" style={{marginTop: 300}}>
 
             <header className={`text-white p-2 nav row`}>
